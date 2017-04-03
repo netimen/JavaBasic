@@ -3,28 +3,30 @@ package com.loftschool.java;
 public class Main {
 
     public static void main(String[] args) {
-        int money = 5000, price = 2000;
-        if (money > price)
-            System.out.println("can buy!");
-        else
-            System.out.println("can't buy :(");
+        int yearInCentury = 2017 % 100; // 17
+        int number = 3 + 2 * (5 + 1);
+        int sum = number++ + 1;
+        System.out.println("number: " + number + " sum: " + sum);
 
-        boolean isSpring = true;
-        if (isSpring) {
-            System.out.println("so cool!");
-            System.out.println("let's go for a walk!");
-        }
+        boolean equals = sum == number;
+        boolean equals2 = sum-- == number;
+        boolean equals3 = --sum == number;
+        boolean notEquals = sum != number;
+        boolean greaterOrEquals = sum >= number;
+        System.out.println("eq: " + equals + " eq2: " + equals2 + " eq3: " + equals);
 
-        int repetitionCount = 2;
-        while (repetitionCount > 0) {
-            System.out.println("doing something important!");
-            repetitionCount--;
-        }
+        boolean isMale = true, isStudent = true, isYoung = true;
+        boolean isFemale = !isMale; // false
+        boolean goesArmy = isMale && !isStudent && isYoung;
 
-        while (repetitionCount-- > 0)
-            System.out.println("doing something important!");
+        boolean isPhone = true, isTablet = false, hasAndroid = true, hasIOS = false;
+        boolean isAndroidPhone = isPhone && hasAndroid; // true
+        boolean isAppleDevice = isPhone || isTablet && hasIOS; // true!!!
+        System.out.println("isAppleDevice: " + isAppleDevice);
+        isAppleDevice = (isTablet || isPhone) && hasIOS;
+        System.out.println("isAppleDevice: " + isAppleDevice);
 
-        for (int i = 0; i < 10; i++)
-            System.out.println("doing something important!");
+        boolean isSomething = isPhone && ((number++ > 13) || --sum + 11 != 34);
+        System.out.println("isSomething: " + isSomething);
     }
 }
