@@ -3,30 +3,31 @@ package com.loftschool.java;
 public class Main {
 
     public static void main(String[] args) {
-        int yearInCentury = 2017 % 100; // 17
-        int number = 3 + 2 * (5 + 1);
-        int sum = number++ + 1;
-        System.out.println("number: " + number + " sum: " + sum);
+        boolean isGood = true;
+        if (isGood)
+            System.out.println("do something good");
+        else
+            System.out.println("do something bad");
+        System.out.println("do something fun");
 
-        boolean equals = sum == number;
-        boolean equals2 = sum-- == number;
-        boolean equals3 = --sum == number;
-        boolean notEquals = sum != number;
-        boolean greaterOrEquals = sum >= number;
-        System.out.println("eq: " + equals + " eq2: " + equals2 + " eq3: " + equals);
+        boolean otherCondition = false;
+        if (isGood && otherCondition) {
+            System.out.println("do something good");
+            System.out.println("do something very good");
+        }
 
-        boolean isMale = true, isStudent = true, isYoung = true;
-        boolean isFemale = !isMale; // false
-        boolean goesArmy = isMale && !isStudent && isYoung;
+        int repeatCount = 2;
+        while (repeatCount-- > 0)
+            System.out.println("do something while...");
 
-        boolean isPhone = true, isTablet = false, hasAndroid = true, hasIOS = false;
-        boolean isAndroidPhone = isPhone && hasAndroid; // true
-        boolean isAppleDevice = isPhone || isTablet && hasIOS; // true!!!
-        System.out.println("isAppleDevice: " + isAppleDevice);
-        isAppleDevice = (isTablet || isPhone) && hasIOS;
-        System.out.println("isAppleDevice: " + isAppleDevice);
+        do
+            System.out.println("do something while...");
+        while (repeatCount-- > 0);
 
-        boolean isSomething = isPhone && ((number++ > 13) || --sum + 11 != 34);
-        System.out.println("isSomething: " + isSomething);
+        for (int i = 0; i < 10; i++)
+            System.out.println("iteration number " + i);
+
+        for (int i = 0; i < 10; i--)
+            System.out.println("INFINITE LOOP!!!");
     }
 }
