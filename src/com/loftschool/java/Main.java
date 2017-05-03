@@ -2,48 +2,26 @@ package com.loftschool.java;
 
 public class Main {
 
-    static void printPrice(int price) {
-        System.out.println("Price is " + price);
-        System.out.println("Our price is the best");
-    }
-
-    static int applyDiscount(int price, int discountPercent) {
-        int newPrice = price * (100 - discountPercent) / 100;
-        return newPrice;
-    }
-
-    static int applyDiscount(int price, int discountPercent, boolean oldClient) {
-        percent++; // ERROR
-        if (oldClient)
-            discountPercent *= 2;
-
-        return applyDiscount(price, discountPercent);
-    }
-
     public static void main(String[] args) {
-        int mySalary = 5000;
-        if (mySalary > 1000) {
-            int myMoney = mySalary;
-            myMoney -= 500; // tickets to India
-            if (myMoney > 500) {
-                myMoney -= 100; // new shoes
-                myMoney -= 10; // new T-shirt
-            }
-        }
-        myMoney -= 200; // ERROR
+        Car myCar = new Car();
+        myCar.year = 2010;
+        myCar.drive();
 
-        System.out.println("Price is " + 30);
-        System.out.println("Our price is the best");
+        Car someCar = myCar;
+        someCar.year = 2011; // now myCar.year = 2011
 
-        System.out.println("Price is " + 50);
-        System.out.println("Our price is the best");
-
-        printPrice(30);
-        printPrice(50);
-
-        int price = 30, percent = 25;
-        int myPrice = applyDiscount(price, percent, true);
-        System.out.println(percent); // still 25!!!
+        int newYear = 2017;
+        Integer myCarPrice = 10000;
+        repairCar(myCar, newYear, myCarPrice); // now myCar.year = 2017 & someCar.year = 2017; myCarPrice = 10000
     }
 
+    static void repairCar(Car car, int year, Integer carPrice) {
+        car.year = year;
+
+        car = new Car();
+        car.year = 2013; // myCar.year = 2017
+
+        year += 3; // newYear = 2017
+        carPrice += 1000; // carPrice = carPrice + 10000; myCarPrice = 10000
+    }
 }
