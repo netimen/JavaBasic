@@ -3,25 +3,25 @@ package com.loftschool.java;
 public class Main {
 
     public static void main(String[] args) {
-        Car myCar = new Car();
-        myCar.year = 2010;
-        myCar.drive();
+        Car bus = new Bus(2011, 50);
+        bus.seatsCount = 30;
 
-        Car someCar = myCar;
-        someCar.year = 2011; // now myCar.year = 2011
+        Bus car = new Car(2013);
 
-        int newYear = 2017;
-        Integer myCarPrice = 10000;
-        repairCar(myCar, newYear, myCarPrice); // now myCar.year = 2017 & someCar.year = 2017; myCarPrice = 10000
+        Truck truck = new Truck(2014, 100);
+        truck.drive();
+        truck.year = 2015;
+        truck.maxWeight = 200;
+
+        repairCar(truck);
     }
 
-    static void repairCar(Car car, int year, Integer carPrice) {
-        car.year = year;
+    static void repairCar(Car car) {
+        car.year++;
 
-        car = new Car();
-        car.year = 2013; // myCar.year = 2017
-
-        year += 3; // newYear = 2017
-        carPrice += 1000; // carPrice = carPrice + 10000; myCarPrice = 10000
+        if (car instanceof Truck) {
+            Truck truck = (Truck) car;
+            truck.maxWeight += 20;
+        }
     }
 }

@@ -5,22 +5,13 @@ package com.loftschool.java;
  */
 class Car {
     int year;
-    float length, width;
     float speed = 0;
 
-    Car() {
-        year = 2017;
-        length = 4.2f;
-        width = 1.5f;
-    }
-
-    Car(float length, float width, int year) {
-        this.length = length;
-        this.width = width;
+    Car(int year) {
         this.year = year;
     }
 
     void drive() {
-        speed = 100; // this.speed = 100
+        speed = 100;
     }
 }
