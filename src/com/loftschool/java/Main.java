@@ -1,27 +1,27 @@
 package com.loftschool.java;
 
+import com.loftschool.java.car.Car;
+import com.loftschool.java.car.CarWorkshop;
+import com.loftschool.java.car.Truck;
+import com.loftschool.java.war.Tank;
+
 public class Main {
+    public static final int SECONDS_IN_DAY = 60 * 60 * 24;
 
     public static void main(String[] args) {
-        Car bus = new Bus(2011, 50);
-        bus.seatsCount = 30;
+        Car car = new Car();
+        car.drive();
+        car.speed = 50; // protected!
+        car.year++; // package-local!
 
-        Bus car = new Car(2013);
+        CarWorkshop.repair(car);
+        Car.drive(); // drive() isn't static!
 
-        Truck truck = new Truck(2014, 100);
-        truck.drive();
-        truck.year = 2015;
-        truck.maxWeight = 200;
+        new Tank().drive(); // constructor is package-local
+        new Truck().drive(); // class is package-local
 
-        repairCar(truck);
-    }
-
-    static void repairCar(Car car) {
-        car.year++;
-
-        if (car instanceof Truck) {
-            Truck truck = (Truck) car;
-            truck.maxWeight += 20;
-        }
+        int[] integers = new int[50];
+        for (int i = 0; i < integers.length; i++)
+            integers[i] = i * SECONDS_IN_DAY;
     }
 }
