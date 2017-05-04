@@ -7,13 +7,13 @@ import com.loftschool.java.war.Tank;
 import com.loftschool.java.war.Unit;
 
 public class Main {
-    public static void main(String[] args) {
-        Unit unit = new Unit();
-        Vehicle vehicle = new Vehicle();
+    public final String name = "Dmitry";
 
-        Tank tank = new Tank();
-        tank.receiveCommand();
-        tank.move();
-        tank.shoot();
+    public static void main(String[] args) {
+        Car.Diagnostics diagnostics = new Car.Diagnostics();
+
+        Engine engine = new Car.BestEngine();
+        Car car = new Car();
+        engine = car.new BestEngine();
     }
 }
