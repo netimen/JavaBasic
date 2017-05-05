@@ -1,19 +1,55 @@
 package com.loftschool.java;
 
-import com.loftschool.java.car.Car;
-import com.loftschool.java.car.Truck;
-import com.loftschool.java.car.Vehicle;
-import com.loftschool.java.war.Tank;
-import com.loftschool.java.war.Unit;
+import java.io.IOException;
 
+// TODO please read http://developer.alexanderklimov.ru/android/java/exception.php
 public class Main {
-    public final String name = "Dmitry";
 
     public static void main(String[] args) {
-        Car.Diagnostics diagnostics = new Car.Diagnostics();
+        String name = null;
+//        int len = name.length();
+//        if (name != null)
+//            name.toUpperCase();
 
-        Engine engine = new Car.BestEngine();
-        Car car = new Car();
-        engine = car.new BestEngine();
+        try {
+            importantWork("");
+            System.out.println("do something important");
+        } catch (NullPointerException exception) {
+            exception.printStackTrace();
+            System.out.println("null");
+//        } catch (IllegalArgumentException exception) {
+//            System.out.println("illegal argument!");
+//        } catch (Exception exception) {
+//            System.out.println("Some other error");
+        } finally {
+            System.out.println("do in all cases");
+        }
+
+        otherWork();
+
+        try {
+            readBigFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    static void importantWork(String param) {
+        if (param == null)
+            throw new NullPointerException();
+
+        if (param.equals(""))
+            throw new IllegalArgumentException("param can't be empty string!!!");
+
+        throw new ArithmeticException();
+    }
+
+    static void otherWork(){
+        throw new MyException();
+    }
+
+    static void readBigFile() throws IOException {
+        throw new IOException();
+    }
+
 }
