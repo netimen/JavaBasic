@@ -1,41 +1,36 @@
 package com.loftschool.java;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        int[] numbers = new int[10];
-        numbers[0] = 1;
-        System.out.println(numbers.length);
+        BadList badList = new BadList();
+        badList.add("string");
+        Integer number = (Integer) badList.get(0); // CRASH!
 
-        List<Integer> numbersList = new ArrayList<>();
-        for (int i = 0; i < 10; i++)
-            numbersList.add(i);
+        MyList<String> myList = new MyList<>();
+        myList.add("string");
+        String string = myList.get(0);
 
-        for (int i = 0; i < numbersList.size(); i++)
-            System.out.println(numbersList.get(i));
+        MyList<int> noWay = new MyList<>();
+        MyList<Integer> intList = new MyList<>();
 
-        for (Integer number : numbersList)
-            System.out.println(number);
+        String name = "Dmitry";
+        Object name2 = name;
+        MyList<Object> objList = myList;
 
-        System.out.println(numbersList.contains(22));
+        Map<String, List<Integer>> megaMap = new HashMap<>();
 
-        Map<String, Integer> ages = new HashMap<>();
-        ages.put("Dmitry", 30);
-        ages.put("Mom", 61);
-        int myAge = ages.get("Dmitry");
+        genericMethod("");
+        anotherGenericMethod("", new ArrayList<String>());
+    }
 
-        System.out.println(ages.isEmpty());
-        System.out.println(ages.containsKey("Alex"));
-        System.out.println(ages.containsValue(22));
-
-        for (String name : ages.keySet())
-            System.out.println(ages.get(name));
+    static <T> void genericMethod(T param) {
 
     }
 
+    static <T, C extends Collection<T>> void anotherGenericMethod(T object, C container) {
+        container.add(object);
+    }
 }
