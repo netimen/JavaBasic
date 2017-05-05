@@ -1,55 +1,41 @@
 package com.loftschool.java;
 
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-// TODO please read http://developer.alexanderklimov.ru/android/java/exception.php
 public class Main {
 
     public static void main(String[] args) {
-        String name = null;
-//        int len = name.length();
-//        if (name != null)
-//            name.toUpperCase();
+        int[] numbers = new int[10];
+        numbers[0] = 1;
+        System.out.println(numbers.length);
 
-        try {
-            importantWork("");
-            System.out.println("do something important");
-        } catch (NullPointerException exception) {
-            exception.printStackTrace();
-            System.out.println("null");
-//        } catch (IllegalArgumentException exception) {
-//            System.out.println("illegal argument!");
-//        } catch (Exception exception) {
-//            System.out.println("Some other error");
-        } finally {
-            System.out.println("do in all cases");
-        }
+        List<Integer> numbersList = new ArrayList<>();
+        for (int i = 0; i < 10; i++)
+            numbersList.add(i);
 
-        otherWork();
+        for (int i = 0; i < numbersList.size(); i++)
+            System.out.println(numbersList.get(i));
 
-        try {
-            readBigFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+        for (Integer number : numbersList)
+            System.out.println(number);
 
-    static void importantWork(String param) {
-        if (param == null)
-            throw new NullPointerException();
+        System.out.println(numbersList.contains(22));
 
-        if (param.equals(""))
-            throw new IllegalArgumentException("param can't be empty string!!!");
+        Map<String, Integer> ages = new HashMap<>();
+        ages.put("Dmitry", 30);
+        ages.put("Mom", 61);
+        int myAge = ages.get("Dmitry");
 
-        throw new ArithmeticException();
-    }
+        System.out.println(ages.isEmpty());
+        System.out.println(ages.containsKey("Alex"));
+        System.out.println(ages.containsValue(22));
 
-    static void otherWork(){
-        throw new MyException();
-    }
+        for (String name : ages.keySet())
+            System.out.println(ages.get(name));
 
-    static void readBigFile() throws IOException {
-        throw new IOException();
     }
 
 }
