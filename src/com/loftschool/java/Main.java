@@ -1,36 +1,42 @@
 package com.loftschool.java;
 
-import java.util.*;
-
 public class Main {
 
+    private static Worker worker = new Worker();
+
+    // TODO please read http://developer.alexanderklimov.ru/android/java/thread.php
     public static void main(String[] args) {
-        BadList badList = new BadList();
-        badList.add("string");
-        Integer number = (Integer) badList.get(0); // CRASH!
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < 100; i++)
+                    System.out.println("Thread " + i);
+            }
+        });
+        thread.start();
 
-        MyList<String> myList = new MyList<>();
-        myList.add("string");
-        String string = myList.get(0);
+        for (int i = 0; i < 100; i++)
+            System.out.println("Main " + i);
 
-        MyList<int> noWay = new MyList<>();
-        MyList<Integer> intList = new MyList<>();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        String name = "Dmitry";
-        Object name2 = name;
-        MyList<Object> objList = myList;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                worker.fillData();
+            }
+        }).start();
 
-        Map<String, List<Integer>> megaMap = new HashMap<>();
-
-        genericMethod("");
-        anotherGenericMethod("", new ArrayList<String>());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                worker.printData();
+            }
+        }).start();
     }
 
-    static <T> void genericMethod(T param) {
-
-    }
-
-    static <T, C extends Collection<T>> void anotherGenericMethod(T object, C container) {
-        container.add(object);
-    }
 }
